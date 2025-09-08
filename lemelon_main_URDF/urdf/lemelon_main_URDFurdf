@@ -1,0 +1,1071 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="lemelon_main_URDF">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.00747228360056373 0.00301623445314325 0.288626855226577"
+        rpy="0 0 0" />
+      <mass
+        value="3.24681831949828" />
+      <inertia
+        ixx="0.0146735025334909"
+        ixy="1.2448165048297E-07"
+        ixz="5.35276714585173E-05"
+        iyy="0.0134884464263371"
+        iyz="9.45500929826918E-07"
+        izz="0.00668118337534662" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_1">
+    <inertial>
+      <origin
+        xyz="-0.017115837341029 2.6124501589786E-09 -1.63680612071115E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.174935354837447" />
+      <inertia
+        ixx="7.70482115366726E-05"
+        ixy="5.72163718585029E-11"
+        ixz="9.6431100912108E-13"
+        iyy="4.04951562776479E-05"
+        iyz="-3.60754621944162E-11"
+        izz="4.04972646379577E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_1"
+    type="continuous">
+    <origin
+      xyz="0.071279 0.12692 -0.047445"
+      rpy="0 0 1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_2">
+    <inertial>
+      <origin
+        xyz="-0.0171161886893961 -2.13046352712243E-08 1.42601544801668E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.174933621774301" />
+      <inertia
+        ixx="7.70469922275197E-05"
+        ixy="-6.261873697111E-11"
+        ixz="3.09411591475657E-12"
+        iyy="4.04954789931467E-05"
+        iyz="-2.97354177450563E-10"
+        izz="4.04957314381642E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_2"
+    type="continuous">
+    <origin
+      xyz="0.073204 -0.12704 -0.047445"
+      rpy="0 0 -1.0472" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_2" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wheel_3">
+    <inertial>
+      <origin
+        xyz="-0.0171160963849769 -1.49657735206213E-11 1.59898067009223E-11"
+        rpy="0 0 0" />
+      <mass
+        value="0.174927105102737" />
+      <inertia
+        ixx="7.70424431289627E-05"
+        ixy="-2.34557227953173E-15"
+        ixz="5.36652093337851E-15"
+        iyy="4.04927593402229E-05"
+        iyz="-5.47022273635208E-10"
+        izz="4.04939630858035E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wheel_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_3"
+    type="continuous">
+    <origin
+      xyz="-0.14663 0.00012499 -0.047445"
+      rpy="0 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="shoulder_left">
+    <inertial>
+      <origin
+        xyz="0.0313012186792611 -1.10479852627465E-05 0.0295782009466995"
+        rpy="0 0 0" />
+      <mass
+        value="0.153991122691971" />
+      <inertia
+        ixx="7.94526143677268E-05"
+        ixy="-8.82844628419604E-08"
+        ixz="-6.50616040574496E-06"
+        iyy="8.06782545089724E-05"
+        iyz="6.44935862285553E-07"
+        izz="4.35835688997889E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/shoulder_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/shoulder_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_left"
+    type="revolute">
+    <origin
+      xyz="0.023058 0.16 0.65345"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_left" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lower_left">
+    <inertial>
+      <origin
+        xyz="-0.0662852259130058 6.33460310954514E-05 -0.0120865718044851"
+        rpy="0 0 0" />
+      <mass
+        value="0.21613392199361" />
+      <inertia
+        ixx="0.0001064603371078"
+        ixy="-1.4318971458068E-06"
+        ixz="-4.53380820803741E-05"
+        iyy="0.00023422069834707"
+        iyz="-3.58349306480364E-07"
+        izz="0.000290303708351338" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/lower_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/lower_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lower_left"
+    type="revolute">
+    <origin
+      xyz="0.0306 1.1804E-05 0.07555"
+      rpy="0 0 0.0036537" />
+    <parent
+      link="shoulder_left" />
+    <child
+      link="lower_left" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="upper_left">
+    <inertial>
+      <origin
+        xyz="0.0734307532807643 0.00143231129714808 0.00186253081750221"
+        rpy="0 0 0" />
+      <mass
+        value="0.195627098272173" />
+      <inertia
+        ixx="7.0177877227067E-05"
+        ixy="-1.66724184538949E-05"
+        ixz="1.23254403547165E-06"
+        iyy="0.00014643775237229"
+        iyz="7.15469467619917E-08"
+        izz="0.00019334249914215" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/upper_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/upper_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upper_left"
+    type="revolute">
+    <origin
+      xyz="-0.11595 -0.005 0.0034053"
+      rpy="0 -0.21443 0" />
+    <parent
+      link="lower_left" />
+    <child
+      link="upper_left" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_left">
+    <inertial>
+      <origin
+        xyz="0.0251485426385852 -0.00362092685504439 -0.0226070274496974"
+        rpy="0 0 0" />
+      <mass
+        value="0.0802114779271519" />
+      <inertia
+        ixx="3.74016752447466E-05"
+        ixy="8.56725135533968E-07"
+        ixz="7.37244999191851E-06"
+        iyy="2.60162553922121E-05"
+        iyz="-7.57811698290783E-07"
+        izz="3.91172064305651E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_left"
+    type="revolute">
+    <origin
+      xyz="0.13484 0.00085 0.0066097"
+      rpy="0 -0.010452 0" />
+    <parent
+      link="upper_left" />
+    <child
+      link="wrist_left" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="gripper_left">
+    <inertial>
+      <origin
+        xyz="0.0443935294960646 -0.007107512677379 -0.00070736349634859"
+        rpy="0 0 0" />
+      <mass
+        value="0.117795605903817" />
+      <inertia
+        ixx="3.95643828629785E-05"
+        ixy="1.00783716952602E-05"
+        ixz="1.23656358505046E-07"
+        iyy="5.95600880947112E-05"
+        iyz="5.38225235243543E-07"
+        izz="6.82817629523028E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/gripper_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/gripper_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gripper_left"
+    type="revolute">
+    <origin
+      xyz="0.032866 0.00405 -0.029495"
+      rpy="0 0.7314 0" />
+    <parent
+      link="wrist_left" />
+    <child
+      link="gripper_left" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="jaw_left">
+    <inertial>
+      <origin
+        xyz="0.0298375115423077 -0.00602721974460063 0.000384356053883872"
+        rpy="0 0 0" />
+      <mass
+        value="0.028705119938167" />
+      <inertia
+        ixx="4.74813000480841E-06"
+        ixy="2.36796990212688E-06"
+        ixz="2.6813576494307E-07"
+        iyy="1.5230354344859E-05"
+        iyz="-5.45361267756995E-08"
+        izz="1.2731376118767E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/jaw_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/jaw_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jaw_left"
+    type="revolute">
+    <origin
+      xyz="0.04034 0.020186 0.00075023"
+      rpy="0.032198 0 0" />
+    <parent
+      link="gripper_left" />
+    <child
+      link="jaw_left" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_camera_left">
+    <inertial>
+      <origin
+        xyz="0.0072757921701406 -0.0239275616873812 0.0354806829339677"
+        rpy="0 0 0" />
+      <mass
+        value="0.0180074239956396" />
+      <inertia
+        ixx="9.66707096365207E-06"
+        ixy="-1.30011541939717E-08"
+        ixz="-1.99089674836838E-06"
+        iyy="7.26464170682642E-06"
+        iyz="-6.42630012241064E-08"
+        izz="4.41420192536685E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_camera_left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_camera_left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_camera_left"
+    type="fixed">
+    <origin
+      xyz="0.03994 0.022383 0.025734"
+      rpy="0.032198 0 0" />
+    <parent
+      link="gripper_left" />
+    <child
+      link="wrist_camera_left" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="shoulder_right">
+    <inertial>
+      <origin
+        xyz="0.0312997408115732 -0.000304388109450299 0.0295782004523502"
+        rpy="0 0 0" />
+      <mass
+        value="0.153991122987668" />
+      <inertia
+        ixx="7.94510666199661E-05"
+        ixy="-7.67827423633458E-08"
+        ixz="-6.49983126416184E-06"
+        iyy="8.06798007802475E-05"
+        iyz="7.05880438407231E-07"
+        izz="4.35835683461722E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/shoulder_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/shoulder_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulder_right"
+    type="revolute">
+    <origin
+      xyz="0.023058 -0.15992 0.65345"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulder_right" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="lower_right">
+    <inertial>
+      <origin
+        xyz="-0.0662995937960287 6.33446293311635E-05 -0.0120075075897417"
+        rpy="0 0 0" />
+      <mass
+        value="0.216133921226184" />
+      <inertia
+        ixx="0.000106352452868981"
+        ixy="-1.43232681272835E-06"
+        ixz="-4.51186914175409E-05"
+        iyy="0.000234220697223063"
+        iyz="-3.56644337579554E-07"
+        izz="0.000290411590977032" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/lower_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/lower_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lower_right"
+    type="continuous">
+    <origin
+      xyz="0.030599 -0.00027497 0.07555"
+      rpy="0 0 -0.005718" />
+    <parent
+      link="shoulder_right" />
+    <child
+      link="lower_right" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="upper_right">
+    <inertial>
+      <origin
+        xyz="0.0734461133839745 0.00143231086383946 0.00110143372882976"
+        rpy="0 0 0" />
+      <mass
+        value="0.195627091930103" />
+      <inertia
+        ixx="7.02166486508588E-05"
+        ixy="-1.66707838620402E-05"
+        ixz="2.50862196341431E-06"
+        iyy="0.000146437745289499"
+        iyz="2.44327182163383E-07"
+        izz="0.000193303716953737" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/upper_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/upper_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="upper_right"
+    type="revolute">
+    <origin
+      xyz="-0.11595 -0.005 0.0035436"
+      rpy="0 -0.21323 0" />
+    <parent
+      link="lower_right" />
+    <child
+      link="upper_right" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wrist_right">
+    <inertial>
+      <origin
+        xyz="0.0243557743798538 -0.00362091365025932 -0.0234589602262436"
+        rpy="0 0 0" />
+      <mass
+        value="0.080211508750073" />
+      <inertia
+        ixx="3.79107792778598E-05"
+        ixy="8.30134265443781E-07"
+        ixz="7.41398442652885E-06"
+        iyy="2.60162466277929E-05"
+        iyz="-7.86851365984173E-07"
+        izz="3.86081399409834E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wrist_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_right"
+    type="revolute">
+    <origin
+      xyz="0.1349 0.00085 0.0052119"
+      rpy="0 -8.8548E-05 0" />
+    <parent
+      link="upper_right" />
+    <child
+      link="wrist_right" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="gripper_right">
+    <inertial>
+      <origin
+        xyz="0.0443935234826054 -0.00711090124057329 -0.000672433861340638"
+        rpy="0 0 0" />
+      <mass
+        value="0.11779560433178" />
+      <inertia
+        ixx="3.95643863391347E-05"
+        ixy="1.00788507317706E-05"
+        ixz="7.41375220110006E-08"
+        iyy="5.95655330444833E-05"
+        iyz="5.81054220666724E-07"
+        izz="6.82762091556857E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/gripper_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/gripper_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="gripper_right"
+    type="revolute">
+    <origin
+      xyz="0.031831 0.00405 -0.030609"
+      rpy="0 0.76582 0" />
+    <parent
+      link="wrist_right" />
+    <child
+      link="gripper_right" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="jaw_right">
+    <inertial>
+      <origin
+        xyz="0.029893521288322 -0.0057430391304344 0.000384353363049761"
+        rpy="0 0 0" />
+      <mass
+        value="0.0287051286070396" />
+      <inertia
+        ixx="4.70401880366198E-06"
+        ixy="2.2678081661005E-06"
+        ixz="2.68645875123366E-07"
+        iyy="1.52744755316981E-05"
+        iyz="-5.198325473706E-08"
+        izz="1.27313860961258E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/jaw_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/jaw_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jaw_right"
+    type="revolute">
+    <origin
+      xyz="0.04034 0.02019 0.00065104"
+      rpy="0.027285 0 0" />
+    <parent
+      link="gripper_right" />
+    <child
+      link="jaw_right" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wirst_camera_right">
+    <inertial>
+      <origin
+        xyz="0.00727579577775678 -0.0239275601112472 0.0354806891705587"
+        rpy="0 0 0" />
+      <mass
+        value="0.0180074294526777" />
+      <inertia
+        ixx="9.66707104843497E-06"
+        ixy="-1.3001533807172E-08"
+        ixz="-1.99089665155502E-06"
+        iyy="7.26464116829765E-06"
+        iyz="-6.42634944997405E-08"
+        izz="4.41420266695792E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wirst_camera_right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/wirst_camera_right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wirst_camera_right"
+    type="fixed">
+    <origin
+      xyz="0.03994 0.022509 0.025624"
+      rpy="0.027285 0 0" />
+    <parent
+      link="gripper_right" />
+    <child
+      link="wirst_camera_right" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="mast_camera">
+    <inertial>
+      <origin
+        xyz="-0.00944770298918579 0.0151554834415628 -0.0243002394395457"
+        rpy="0 0 0" />
+      <mass
+        value="0.0616239500944943" />
+      <inertia
+        ixx="1.88058846166817E-05"
+        ixy="3.11696136521938E-07"
+        ixz="-6.48414236613127E-08"
+        iyy="1.10235289299561E-05"
+        iyz="1.60946377261097E-07"
+        izz="1.59183858916917E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/mast_camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lemelon_main_URDF_2/meshes/mast_camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="mast_camera"
+    type="fixed">
+    <origin
+      xyz="-0.038424 -0.015 0.90929"
+      rpy="0 0.48788 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="mast_camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
