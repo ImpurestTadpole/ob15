@@ -18,26 +18,23 @@ import base64
 import json
 import logging
 from functools import cached_property
-from typing import Any
+from typing import Any, Dict, Optional, Tuple
 
 import cv2
 import numpy as np
+import zmq
 
-from lerobot.utils.constants import ACTION, OBS_STATE
 from lerobot.utils.errors import DeviceAlreadyConnectedError, DeviceNotConnectedError
 
 from ..robot import Robot
-from .config_ob15 import OB15ClientConfig
+from .config_xlerobot import XLerobotClientConfig
 
 
-class OB15Client(Robot):
-    config_class = OB15ClientConfig
-    name = "ob15_client"
+class XLerobotClient(Robot):
+    config_class = XLerobotClientConfig
+    name = "xlerobot_client"
 
-    def __init__(self, config: OB15ClientConfig):
-        import zmq
-
-        self._zmq = zmq
+    def __init__(self, config: XLerobotClientConfig):
         super().__init__(config)
         self.config = config
         self.id = config.id
@@ -73,27 +70,30 @@ class OB15Client(Robot):
 
     @cached_property
     def _state_ft(self) -> dict[str, type]:
-        return dict.fromkeys(
-            (
-                "left_arm_shoulder_pan.pos",
-                "left_arm_shoulder_lift.pos",
-                "left_arm_elbow_flex.pos",
-                "left_arm_wrist_flex.pos",
-                "left_arm_wrist_roll.pos",
-                "left_arm_gripper.pos",
-                "right_arm_shoulder_pan.pos",
-                "right_arm_shoulder_lift.pos",
-                "right_arm_elbow_flex.pos",
-                "right_arm_wrist_flex.pos",
-                "right_arm_wrist_roll.pos",
-                "right_arm_gripper.pos",
-                "x.vel",
-                "y.vel",
-                "theta.vel",
-            ),
-            float,
+        """Match `XLerobot._state_ft` key order so HVLA / policies see the same 18-DOF layout."""
+        keys: tuple[str, ...] = (
+            "left_arm_shoulder_pan.pos",
+            "left_arm_shoulder_lift.pos",
+            "left_arm_elbow_flex.pos",
+            "left_arm_wrist_flex.pos",
+            "left_arm_wrist_roll.pos",
+            "left_arm_gripper.pos",
+            "right_arm_shoulder_pan.pos",
+            "right_arm_shoulder_lift.pos",
+            "right_arm_elbow_flex.pos",
+            "right_arm_wrist_flex.pos",
+            "right_arm_wrist_roll.pos",
+            "right_arm_gripper.pos",
+            "head_pan.pos",
+            "head_tilt.pos",
+            "x.vel",
+            "y.vel",
+            "theta.vel",
         )
-
+        if self.config.lift_axis.enabled:
+            keys = (*keys, f"{self.config.lift_axis.name}.height_mm")
+        return dict.fromkeys(keys, float)
+        
     @cached_property
     def _state_order(self) -> tuple[str, ...]:
         return tuple(self._state_ft.keys())
@@ -123,10 +123,9 @@ class OB15Client(Robot):
 
         if self._is_connected:
             raise DeviceAlreadyConnectedError(
-                "OB15 Daemon is already connected. Do not run `robot.connect()` twice."
+                "LeKiwi Daemon is already connected. Do not run `robot.connect()` twice."
             )
 
-        zmq = self._zmq
         self.zmq_context = zmq.Context()
         self.zmq_cmd_socket = self.zmq_context.socket(zmq.PUSH)
         zmq_cmd_locator = f"tcp://{self.remote_ip}:{self.port_zmq_cmd}"
@@ -142,16 +141,15 @@ class OB15Client(Robot):
         poller.register(self.zmq_observation_socket, zmq.POLLIN)
         socks = dict(poller.poll(self.connect_timeout_s * 1000))
         if self.zmq_observation_socket not in socks or socks[self.zmq_observation_socket] != zmq.POLLIN:
-            raise DeviceNotConnectedError("Timeout waiting for OB15 Host to connect expired.")
+            raise DeviceNotConnectedError("Timeout waiting for LeKiwi Host to connect expired.")
 
         self._is_connected = True
 
     def calibrate(self) -> None:
         pass
 
-    def _poll_and_get_latest_message(self) -> str | None:
+    def _poll_and_get_latest_message(self) -> Optional[str]:
         """Polls the ZMQ socket for a limited time and returns the latest message string."""
-        zmq = self._zmq
         poller = zmq.Poller()
         poller.register(self.zmq_observation_socket, zmq.POLLIN)
 
@@ -178,7 +176,7 @@ class OB15Client(Robot):
 
         return last_msg
 
-    def _parse_observation_json(self, obs_string: str) -> dict[str, Any] | None:
+    def _parse_observation_json(self, obs_string: str) -> Optional[Dict[str, Any]]:
         """Parses the JSON observation string."""
         try:
             return json.loads(obs_string)
@@ -186,7 +184,7 @@ class OB15Client(Robot):
             logging.error(f"Error decoding JSON observation: {e}")
             return None
 
-    def _decode_image_from_b64(self, image_b64: str) -> np.ndarray | None:
+    def _decode_image_from_b64(self, image_b64: str) -> Optional[np.ndarray]:
         """Decodes a base64 encoded image string to an OpenCV image."""
         if not image_b64:
             return None
@@ -202,18 +200,18 @@ class OB15Client(Robot):
             return None
 
     def _remote_state_from_obs(
-        self, observation: dict[str, Any]
-    ) -> tuple[dict[str, np.ndarray], dict[str, Any]]:
+        self, observation: Dict[str, Any]
+    ) -> Tuple[Dict[str, np.ndarray], Dict[str, Any]]:
         """Extracts frames, and state from the parsed observation."""
 
         flat_state = {key: observation.get(key, 0.0) for key in self._state_order}
 
         state_vec = np.array([flat_state[key] for key in self._state_order], dtype=np.float32)
 
-        obs_dict: dict[str, Any] = {**flat_state, OBS_STATE: state_vec}
+        obs_dict: Dict[str, Any] = {**flat_state, "observation.state": state_vec}
 
         # Decode images
-        current_frames: dict[str, np.ndarray] = {}
+        current_frames: Dict[str, np.ndarray] = {}
         for cam_name, image_b64 in observation.items():
             if cam_name not in self._cameras_ft:
                 continue
@@ -223,7 +221,7 @@ class OB15Client(Robot):
 
         return current_frames, obs_dict
 
-    def _get_data(self) -> tuple[dict[str, np.ndarray], dict[str, Any], dict[str, Any]]:
+    def _get_data(self) -> Tuple[Dict[str, np.ndarray], Dict[str, Any], Dict[str, Any]]:
         """
         Polls the video socket for the latest observation data.
 
@@ -304,8 +302,9 @@ class OB15Client(Robot):
             theta_cmd += theta_speed
         if self.teleop_keys["rotate_right"] in pressed_keys:
             theta_cmd -= theta_speed
+            
         return {
-            "x.vel": x_cmd,
+            "x.vel": x_cmd, 
             "y.vel": y_cmd,
             "theta.vel": theta_cmd,
         }
@@ -314,7 +313,7 @@ class OB15Client(Robot):
         pass
 
     def send_action(self, action: dict[str, Any]) -> dict[str, Any]:
-        """Command OB15 to move to a target joint configuration. Translates to motor space + sends over ZMQ
+        """Command lekiwi to move to a target joint configuration. Translates to motor space + sends over ZMQ
 
         Args:
             action (np.ndarray): array containing the goal positions for the motors.
@@ -327,7 +326,7 @@ class OB15Client(Robot):
         """
         if not self._is_connected:
             raise DeviceNotConnectedError(
-                "OB15 is not connected. You need to run `robot.connect()`."
+                "ManipulatorRobot is not connected. You need to run `robot.connect()`."
             )
 
         self.zmq_cmd_socket.send_string(json.dumps(action))  # action is in motor space
@@ -336,7 +335,7 @@ class OB15Client(Robot):
         actions = np.array([action.get(k, 0.0) for k in self._state_order], dtype=np.float32)
 
         action_sent = {key: actions[i] for i, key in enumerate(self._state_order)}
-        action_sent[ACTION] = actions
+        action_sent["action"] = actions
         return action_sent
 
     def disconnect(self):
@@ -344,7 +343,7 @@ class OB15Client(Robot):
 
         if not self._is_connected:
             raise DeviceNotConnectedError(
-                "OB15 is not connected. You need to run `robot.connect()` before disconnecting."
+                "LeKiwi is not connected. You need to run `robot.connect()` before disconnecting."
             )
         self.zmq_observation_socket.close()
         self.zmq_cmd_socket.close()

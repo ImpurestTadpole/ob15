@@ -1,16 +1,13 @@
-#!/usr/bin/env python
-"""
-OB15 Robot Module
-LeRobot-compatible robot implementation for OB15 dual-arm system
-"""
-
-from .config_ob15 import OB15Config, OB15ClientConfig
-from .ob15 import OB15
-from .ob15_client import OB15Client
+from .config_xlerobot import XLerobotClientConfig, XLerobotConfig, XLerobotHostConfig
+from .xlerobot import XLerobot
+from .xlerobot_client import XLerobotClient
+from .xlerobot_host import XLerobotHost
 
 __all__ = [
-    "OB15",
-    "OB15Client",
-    "OB15Config",
-    "OB15ClientConfig",
+    "XLerobot",
+    "XLerobotClient",
+    "XLerobotClientConfig",
+    "XLerobotConfig",
+    "XLerobotHost",
+    "XLerobotHostConfig",
 ]
