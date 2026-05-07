@@ -3,5 +3,8 @@
 Based around the Xlerobot platform the ob15 design uses way fewer parts and in a much smaller footprint. 
 the software backend is Xlerobot modifyed for this configuration.
 
+The fork for controlling this version of xlerobot with some local changes can be found at this fork:
+[lerobot fork](https://github.com/ImpurestTadpole/lerobot/tree/main)
+
 
 Made possible by [Xlerobot](https://github.com/Vector-Wangel/XLeRobot/tree/main) [Lerobot](https://github.com/huggingface/lerobot) [Lekiwi](https://github.com/SIGRobotics-UIUC/LeKiwi)
